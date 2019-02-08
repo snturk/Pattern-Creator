@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Pattern Creator v2</title>
+</head>
+<body>
+    <div id="velocityBlock">
+    Velocity X: 
+    <input type='number' id='velocityX' value="0"><br>
+    Velocity Y: 
+    <input type="number" id="velocityY" value="0"><br>
+    <input type="button" value="Run" style="width: 65px;" onclick="setVar()">
+    <input type="button" value="Pause" style="width: 65px;" onclick="pause()">
+    <input type="button" value="Clear" style="width: 65px;" onclick="clearCanvas()">
+</div>
+    <canvas id='myCanvas' height='600' width='600' style='border: 1px black solid'></canvas>
+    
+    
+    <script>
+var canvas = document.getElementById('myCanvas');
+var draw = canvas.getContext('2d');
+
+//Variables
+var cnvHeight = 600;
+var cnvWidth = 600;
+var ballX = 300;
+var ballY = 300;
+var ballRadius = 4;
+var velocityX;
+var velocityY;
+var refreshInterval;
+
+ //Functions   
+function setVar(){
+       velocityX = parseInt(document.getElementById("velocityX").value);
+       velocityY = parseInt(document.getElementById("velocityY").value);
+        refreshInterval = setInterval(drawBall, 13);
+    }
+    function pause() {
+        velocityX = 0;
+        velocityY = 0;
+        clearInterval(refreshInterval);
+    }
+    function clearCanvas(){
+        velocityX = 0;
+        velocityY = 0;
+        ballX = 100;
+        ballY = 300;
+        clearInterval(refreshInterval);
+        draw.fillStyle = "white";
+        draw.fillRect(0, 0, cnvWidth, cnvHeight);
+        draw.arc(ballX, ballY, ballRadius, 0, Math.PI*2);
+    }
+    function drawBall(){
+    
+    console.log("Vx: " + velocityX);
+    console.log("Vy: " + velocityY);
+    
+    draw.beginPath();
+    draw.fillStyle = "red";
+    draw.arc(ballX, ballY, ballRadius, 0, Math.PI*2);
+    draw.closePath();
+    ballX += velocityX;
+    ballY += velocityY;
+    draw.fill();
+    if (ballX > cnvWidth - ballRadius || ballX < ballRadius){
+        velocityX *=-1;
+        console.log("VelocityY has been set.");
+    }
+    if(ballY > cnvHeight - ballRadius || ballY < ballRadius){
+        velocityY *= -1;
+        console.log("VelocityY has been set.");
+    }
+
+}
+    </script>
+
+
+</body>
+</html>
