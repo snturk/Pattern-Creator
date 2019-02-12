@@ -1,0 +1,10 @@
+#velocityBlock{
+    border: 1px black solid;
+    height: fit-content;
+    width: fit-content;
+    padding: 10px;
+}
+.divCanvas{
+    float: left;
+    margin-bottom: 5px;
+}
