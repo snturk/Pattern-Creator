@@ -62,3 +62,9 @@ button{
     margin: 10px;
     font-size: 14px;
 }
+#copyright{
+    font-weight: 300;
+    bottom: 1%;
+    left: 44%;
+    position: absolute;
+}
