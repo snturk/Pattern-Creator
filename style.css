@@ -2,9 +2,23 @@
     border: 1px black solid;
     height: fit-content;
     width: fit-content;
+    margin: 0 auto;
     padding: 10px;
 }
 .divCanvas{
     float: left;
     margin-bottom: 5px;
+}
+#alert{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 4px;
+}
+#runButton, #pauseButton, #clearButton{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    margin: 10px;
+    font-size: 14px;
 }
