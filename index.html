@@ -2,37 +2,69 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Pattern Creator v2</title>
+    <title>Pattern Creator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <center>
-    <div id="divCanvas">
-        <canvas id='myCanvas' height='600' width='600' style='border: 2.5px black solid'></canvas>
-    </div>
-    <p id="alert">Please set a value to Velocity X/Y before start.</p>
-    <div id="velocityBlock" align="right">
-        Velocity X: 
-        <input type='number' id='velocityX' value="0"><br>
-        Velocity Y: 
-        <input type="number" id="velocityY" value="0"><br>
-        Ball X:
-        <input type="number" id="ballX" value="300"><br>
-        Ball Y:
-        <input type="number" id="ballY" value="300"><br>
-        Progress Speed:
-        <input type="number" id="progSpeed" value="60"><br>
-       <div align="center"> Color:
-        <input type="color" name="myColor" id="ballColor" value="#ff0000">
-    </div>
-        <div align="center">
-            <button id="runButton" onclick="setVar()" style="width: 65px">Run</button>
-            <button id="pauseButton" onclick="pause()" style="width: 65px">Pause</button>
-            <button id="clearButton" onclick="clearCanvas()" style="width: 65px;">Clear</button>
+    <div id="title" align="center">
+        <span style="color: black"><</span>
+        <span style="color: crimson">P</span>
+        <span style="color:darkblue">a</span>
+        <span style="color:forestgreen">t</span>
+        <span style="color:gold">t</span>
+        <span style="color:indigo">e</span>
+        <span style="color: slateblue">r</span>
+        <span style="color: lightcoral">n</span>
+        <span style="color:"> </span>
+        <span style="color: orangered">C</span>
+        <span style="color: salmon">r</span>
+        <span style="color: slateblue">e</span>
+        <span style="color: springgreen">a</span>
+        <span style="color: violet">t</span>
+        <span style="color: wheat">o</span>
+        <span style="color: teal">r</span>
+        <span style="color: black">></span>
+    </div id="title">    
+    <canvas id='myCanvas' height='600' width='600' style='border: 2.5px black solid'></canvas>
+
+    <div id="controlPanel">
+            <h2 id="panelHeader">Control Panel</h2>
+            <span class="variables">Velocity X:</span> 
+            <input type='number' id='velocityX' value="0"><br>
+            <span class="variables">Velocity Y:</span> 
+            <input type="number" id="velocityY" value="0"><br>
+            <span class="variables">Ball X:</span>
+            <input type="number" id="ballX" value="300"><br>
+            <span class="variables">Ball Y:</span>
+            <input type="number" id="ballY" value="300"><br>
+            <span class="variables">Ball Radius:</span>
+            <input type="number" id="ballRadius" value="3"><br>
+            <span class="variables">Progress Speed:</span>
+            <input type="number" id="progSpeed" value="60"><br>
+           <div align="center"> <span class="variables">Color:</span>
+            <input type="color" name="myColor" id="ballColor" value="#ff0000">
+        </div>
+            <div>
+                <button id="runButton" onclick="run()" style="width: 65px">Run</button>
+                <button id="pauseButton" onclick="pause()" style="width: 65px">Pause</button>
+                <button id="clearButton" onclick="clearCanvas()" style="width: 65px;">Clear</button>
+            
+        </div>
+        </div>
+
+    <div id="howTo">
+     <h2 id="howToHeader" align="center">How to Use</h2>
+        <p id="howToUse">
+            <ul>
+                <li>This is a program that allows you to create <b><i>unique</i></b> and <b><i>colorful</i></b> patterns.</li>
+                <li>Before start, you must assing a value to <b><i>Velocity X</i></b> and <b><i>Velocity Y</i></b>.</li>
+            </ul>
         
+        </p>
+
     </div>
-    </div>
-</center>
+
+
     
     <script src="main.js"></script>
 

@@ -6,7 +6,7 @@ var cnvHeight = document.getElementById("myCanvas").height;
 var cnvWidth = document.getElementById("myCanvas").width;
 var ballX;
 var ballY;
-var ballRadius = 4;
+var ballRadius;
 var velocityX;
 var velocityY;
 var ballColor;
@@ -14,11 +14,13 @@ var progSpeed;
 var refreshInterval;
 
  //Functions   
-function setVar(){
-       velocityX = parseFloat(document.getElementById("velocityX").value);
-       velocityY = parseFloat(document.getElementById("velocityY").value);
+function run(){
+        document.getElementById("runButton").style.opacity = 0.4;
+        velocityX = parseFloat(document.getElementById("velocityX").value);
+        velocityY = parseFloat(document.getElementById("velocityY").value);
         ballX = parseFloat(document.getElementById("ballX").value);
         ballY = parseFloat(document.getElementById("ballY").value);
+        ballRadius = parseFloat(document.getElementById("ballRadius").value);
         ballColor = document.getElementById("ballColor").value;
         progSpeed = parseFloat(document.getElementById("progSpeed").value);
         document.getElementById("runButton").disabled = true;
@@ -28,6 +30,7 @@ function setVar(){
         velocityX = 0;
         velocityY = 0;
         document.getElementById("runButton").disabled = false;
+        document.getElementById("runButton").style.opacity = 1;
         clearInterval(refreshInterval);
     }
     function clearCanvas(){
@@ -36,6 +39,7 @@ function setVar(){
         ballX =parseFloat(document.getElementById("ballX").value);
         ballY =parseFloat(document.getElementById("ballY").value);
         document.getElementById("runButton").disabled = false;
+        document.getElementById("runButton").style.opacity = 1;
         clearInterval(refreshInterval);
         draw.fillStyle = "white";
         draw.fillRect(0, 0, cnvWidth, cnvHeight);
