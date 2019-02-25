@@ -13,9 +13,11 @@ When process is going, you can stop it by "Pause" button or you can clear the ca
 
 Also you can change values of _Process Speed_, _BallX_, _BallY_ and _Color_.
 
-**Process Speed**: It effects the speed of our ball.
-
 **BallX and BallY**: It's values of the coordinates of our ball.
+
+**Ball Radius**: It changes radius of our ball.
+
+**Process Speed**: It effects the speed of our ball.
 
 **Color**: It changes color of the ball (Helps for better and sightly results.). 
 
