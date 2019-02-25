@@ -24,7 +24,12 @@ function run(){
         ballColor = document.getElementById("ballColor").value;
         progSpeed = parseFloat(document.getElementById("progSpeed").value);
         document.getElementById("runButton").disabled = true;
-        refreshInterval = setInterval(drawBall, 1000/progSpeed);
+        if(Math.abs(velocityX) < 10 && Math.abs(velocityY) < 10){
+            refreshInterval = setInterval(drawBall, 1000/progSpeed);
+        }else{
+            refreshInterval = setInterval(drawBall, 100/progSpeed);
+        }
+        
     }
     function pause() {
         velocityX = 0;
@@ -49,15 +54,21 @@ function run(){
     
     console.log("Vx: " + velocityX);
     console.log("Vy: " + velocityY);
-    document.getElementById("ballX").value = ballX;
-    document.getElementById("ballY").value = ballY;
+    document.getElementById("ballX").value = parseInt(ballX);
+    document.getElementById("ballY").value = parseInt(ballY);
     
     draw.beginPath();
     draw.fillStyle = ballColor;
     draw.arc(ballX, ballY, ballRadius, 0, Math.PI*2);
     draw.closePath();
-    ballX += velocityX;
-    ballY += velocityY;
+    if(Math.abs(velocityX) < 10 && Math.abs(velocityY) < 10){
+        ballX += velocityX;
+        ballY += velocityY;
+    }else{
+        ballX += velocityX/30;
+        ballY += velocityY/30;
+    }
+    
     draw.fill();
     if (ballX > cnvWidth - ballRadius || ballX < ballRadius){
         velocityX *=-1;
