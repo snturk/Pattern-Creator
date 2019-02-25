@@ -68,3 +68,10 @@ button{
     left: 44%;
     position: absolute;
 }
+#repo{
+    font-weight: 100;
+    color: black;
+}
+#repo:hover{
+    color: rgb(49, 93, 151);
+}
