@@ -50,7 +50,12 @@ function run(){
         document.getElementById("runButton").disabled = false;
         document.getElementById("runButton").style.opacity = 1;
         clearInterval(refreshInterval);
-        draw.fillStyle = "#282828";
+     if(!isDarkModeActive){
+      draw.fillStyle = "white";
+     }else{
+      draw.fillStyle = "#282828";
+     }
+        
         draw.fillRect(0, 0, cnvWidth, cnvHeight);
         draw.arc(ballX, ballY, ballRadius, 0, Math.PI*2);
     }
