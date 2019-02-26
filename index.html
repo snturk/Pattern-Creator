@@ -48,11 +48,12 @@
             <span class="variables">Ball Y:</span>
             <input type="number" id="ballY" value="300"><br>
             <span class="variables">Ball Radius:</span>
-            <input type="number" id="ballRadius" value="3"><br>
+            <input type="number" id="ballRadius" value="4"><br>
             <span class="variables">Progress Speed:</span>
             <input type="range" id="progSpeed" value="1" min="1" max="100"><br>
            <div align="center"> <span class="variables">Color:</span>
-            <input type="color" name="myColor" id="ballColor" value="#ff0000">
+            <input type="color" name="myColor" id="ballColor" value="#ff0000"><br>
+            <button id="darkMode" onclick="modeChange()">Dark Mode</button>
         </div>
             <div>
                 <button id="runButton" onclick="run()" style="width: 65px">Run</button>
@@ -68,7 +69,7 @@
             <ul>
                 <li>This is a program that allows you to create <b><i>unique</i></b> and <b><i>colorful</i></b> patterns.</li>
                 <li>Before start, you must assign a value to <b><i>Velocity X</i></b> and <b><i>Velocity Y</i></b>.</li>
-                <li><a href="https://github.com/MuratcanSenturk/Pattern-Creator" id="repo" style="text-decoration: none;">Click here for Repository</a></li>
+                <li><a href="https://github.com/MuratcanSenturk/Pattern-Creator" target="_blank" id="repo" style="text-decoration: none;">Click here for Repository</a></li>
             </ul>
         
         </p>
@@ -76,7 +77,6 @@
     </div>
 
 
-    <p align="center" id="copyright">© 2019 Muratcan Şentürk</p>
     <script src="main.js"></script>
 
 

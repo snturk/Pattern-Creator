@@ -2,8 +2,8 @@ var canvas = document.getElementById('myCanvas');
 var draw = canvas.getContext('2d');
 
 //Variables
-var cnvHeight = document.getElementById("myCanvas").height;
-var cnvWidth = document.getElementById("myCanvas").width;
+var cnvHeight;
+var cnvWidth;
 var ballX;
 var ballY;
 var ballRadius;
@@ -12,10 +12,14 @@ var velocityY;
 var ballColor;
 var progSpeed;
 var refreshInterval;
+var panels = ["myCanvas", "controlPanel", "howTo"];
+var isDarkModeActive = false;
 
  //Functions   
 function run(){
         document.getElementById("runButton").style.opacity = 0.4;
+        cnvHeight = document.getElementById("myCanvas").height;
+        cnvWidth = document.getElementById("myCanvas").width;
         velocityX = parseFloat(document.getElementById("velocityX").value);
         velocityY = parseFloat(document.getElementById("velocityY").value);
         ballX = parseFloat(document.getElementById("ballX").value);
@@ -49,6 +53,34 @@ function run(){
         draw.fillStyle = "white";
         draw.fillRect(0, 0, cnvWidth, cnvHeight);
         draw.arc(ballX, ballY, ballRadius, 0, Math.PI*2);
+    }
+    function modeChange(){
+        if(!isDarkModeActive){
+            isDarkModeActive = true;
+            document.getElementById("darkMode").innerHTML = "Light Mode";
+            document.body.style.backgroundColor = "#333333";
+            for(var i = 0; i < 3; i++){
+                document.getElementById(panels[i]).style.backgroundColor = "#282828";
+                document.getElementById(panels[i]).style.color = "white";
+            }
+            document.getElementById("repo").style.color = "white";
+            document.getElementById("darkMode").style.color = "black";
+            document.getElementById("darkMode").style.backgroundColor = "white";
+        
+        }
+        else{
+            isDarkModeActive = false;
+            document.getElementById("darkMode").innerHTML = "Dark Mode";
+            document.body.style.backgroundColor = "rgba(19, 47, 100, 0.329)";
+            for(var i = 0; i < 3; i++){
+                document.getElementById(panels[i]).style.backgroundColor = "white";
+                document.getElementById(panels[i]).style.color = "black";
+            }
+            document.getElementById("repo").style.color = "black";
+            document.getElementById("darkMode").style.color = "white";
+            document.getElementById("darkMode").style.backgroundColor = "black";
+        }
+       
     }
     function drawBall(){
     
