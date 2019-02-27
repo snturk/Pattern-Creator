@@ -14,12 +14,14 @@ var progSpeed;
 var refreshInterval;
 var panels = ["myCanvas", "controlPanel", "howTo"];
 var isDarkModeActive = false;
+var isCleared;
 
  //Functions   
 function run(){
         document.getElementById("runButton").style.opacity = 0.4;
         cnvHeight = document.getElementById("myCanvas").height;
         cnvWidth = document.getElementById("myCanvas").width;
+        isCleared = false;
         velocityX = parseFloat(document.getElementById("velocityX").value);
         velocityY = parseFloat(document.getElementById("velocityY").value);
         ballX = parseFloat(document.getElementById("ballX").value);
@@ -31,8 +33,9 @@ function run(){
         if(Math.abs(velocityX) < 10 && Math.abs(velocityY) < 10){
             refreshInterval = setInterval(drawBall, 1000/progSpeed);
         }else{
-            refreshInterval = setInterval(drawBall, 100/progSpeed);
+            refreshInterval = setInterval(drawBall, 200/progSpeed);
         }
+        console.log("Progress Speed: " + progSpeed);
         
     }
     function pause() {
@@ -47,22 +50,35 @@ function run(){
         velocityY = 0;
         ballX =parseFloat(document.getElementById("ballX").value);
         ballY =parseFloat(document.getElementById("ballY").value);
+        isCleared = true;
         document.getElementById("runButton").disabled = false;
         document.getElementById("runButton").style.opacity = 1;
         clearInterval(refreshInterval);
-        draw.fillStyle = "white";
-        draw.fillRect(0, 0, cnvWidth, cnvHeight);
-        draw.arc(ballX, ballY, ballRadius, 0, Math.PI*2);
-    }
+
+        if(!isDarkModeActive){
+            draw.fillStyle = "white";
+            draw.fillRect(0, 0, cnvWidth, cnvHeight);
+        }else{
+            draw.fillStyle = "#282828";
+            draw.fillRect(0, 0, cnvWidth, cnvHeight);
+        }
+
+        //draw.arc(ballX, ballY, ballRadius, 0, Math.PI*2);
+
+     
     function modeChange(){
         if(!isDarkModeActive){
             isDarkModeActive = true;
             document.getElementById("darkMode").innerHTML = "Light Mode";
             document.body.style.backgroundColor = "#333333";
-            for(var i = 0; i < 3; i++){
-                document.getElementById(panels[i]).style.backgroundColor = "#282828";
-                document.getElementById(panels[i]).style.color = "white";
+            if (isCleared) {
+                draw.fillStyle = "#282828";
+                draw.fillRect(0, 0, cnvWidth, cnvHeight);
             }
+            panels.forEach(function(element){
+                document.getElementById(element).style.backgroundColor = "#282828";
+                document.getElementById(element).style.color = "white";
+            });
             document.getElementById("repo").style.color = "white";
             document.getElementById("darkMode").style.color = "black";
             document.getElementById("darkMode").style.backgroundColor = "white";
@@ -72,10 +88,14 @@ function run(){
             isDarkModeActive = false;
             document.getElementById("darkMode").innerHTML = "Dark Mode";
             document.body.style.backgroundColor = "rgba(19, 47, 100, 0.329)";
-            for(var i = 0; i < 3; i++){
-                document.getElementById(panels[i]).style.backgroundColor = "white";
-                document.getElementById(panels[i]).style.color = "black";
+            if (isCleared) {
+                draw.fillStyle = "white";
+                draw.fillRect(0, 0, cnvWidth, cnvHeight);
             }
+            panels.forEach(function(element){
+                document.getElementById(element).style.backgroundColor = "white";
+                document.getElementById(element).style.color = "black";
+            });
             document.getElementById("repo").style.color = "black";
             document.getElementById("darkMode").style.color = "white";
             document.getElementById("darkMode").style.backgroundColor = "black";
@@ -84,8 +104,6 @@ function run(){
     }
     function drawBall(){
     
-    console.log("Vx: " + velocityX);
-    console.log("Vy: " + velocityY);
     document.getElementById("ballX").value = parseInt(ballX);
     document.getElementById("ballY").value = parseInt(ballY);
     
@@ -97,20 +115,18 @@ function run(){
         ballX += velocityX;
         ballY += velocityY;
     }else{
-        ballX += velocityX/30;
-        ballY += velocityY/30;
+        ballX += velocityX/20;
+        ballY += velocityY/20;
     }
     
     draw.fill();
     if (ballX > cnvWidth - ballRadius || ballX < ballRadius){
         velocityX *=-1;
         document.getElementById("velocityX").value = velocityX;
-        console.log("VelocityY has been set.");
     }
     if(ballY > cnvHeight - ballRadius || ballY < ballRadius){
         velocityY *= -1;
         document.getElementById("velocityY").value = velocityY;
-        console.log("VelocityY has been set.");
     }
 
 }
