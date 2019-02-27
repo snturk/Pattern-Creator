@@ -66,6 +66,7 @@ function run(){
         //draw.arc(ballX, ballY, ballRadius, 0, Math.PI*2);
 
      
+
     function modeChange(){
         if(!isDarkModeActive){
             isDarkModeActive = true;
