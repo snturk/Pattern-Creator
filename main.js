@@ -2,8 +2,6 @@ var canvas = document.getElementById('myCanvas');
 var draw = canvas.getContext('2d');
 
 //Variables
-var cnvHeight;
-var cnvWidth;
 var ballX;
 var ballY;
 var ballRadius;
@@ -19,8 +17,6 @@ var isCleared;
  //Functions   
 function run(){
         document.getElementById("runButton").style.opacity = 0.4;
-        cnvHeight = document.getElementById("myCanvas").height;
-        cnvWidth = document.getElementById("myCanvas").width;
         isCleared = false;
         velocityX = parseFloat(document.getElementById("velocityX").value);
         velocityY = parseFloat(document.getElementById("velocityY").value);
@@ -57,10 +53,10 @@ function run(){
 
         if(!isDarkModeActive){
             draw.fillStyle = "white";
-            draw.fillRect(0, 0, cnvWidth, cnvHeight);
+            draw.fillRect(0, 0, canvas.height, canvas.width);
         }else{
             draw.fillStyle = "#282828";
-            draw.fillRect(0, 0, cnvWidth, cnvHeight);
+            draw.fillRect(0, 0, canvas.height, canvas.width);
         }
 
         //draw.arc(ballX, ballY, ballRadius, 0, Math.PI*2);
@@ -74,7 +70,7 @@ function run(){
             document.body.style.backgroundColor = "#333333";
             if (isCleared) {
                 draw.fillStyle = "#282828";
-                draw.fillRect(0, 0, cnvWidth, cnvHeight);
+                draw.fillRect(0, 0, canvas.height, canvas.width);
             }
             panels.forEach(function(element){
                 document.getElementById(element).style.backgroundColor = "#282828";
@@ -91,7 +87,7 @@ function run(){
             document.body.style.backgroundColor = "rgba(19, 47, 100, 0.329)";
             if (isCleared) {
                 draw.fillStyle = "white";
-                draw.fillRect(0, 0, cnvWidth, cnvHeight);
+                draw.fillRect(0, 0, canvas.height, canvas.width);
             }
             panels.forEach(function(element){
                 document.getElementById(element).style.backgroundColor = "white";
@@ -121,11 +117,11 @@ function run(){
     }
     
     draw.fill();
-    if (ballX > cnvWidth - ballRadius || ballX < ballRadius){
+    if (ballX > canvas.height - ballRadius || ballX < ballRadius){
         velocityX *=-1;
         document.getElementById("velocityX").value = velocityX;
     }
-    if(ballY > cnvHeight - ballRadius || ballY < ballRadius){
+    if(ballY > canvas.width - ballRadius || ballY < ballRadius){
         velocityY *= -1;
         document.getElementById("velocityY").value = velocityY;
     }
