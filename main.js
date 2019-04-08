@@ -1,7 +1,6 @@
 var canvas = document.getElementById('myCanvas');
 var draw = canvas.getContext('2d');
 
-//Variables
 var ballX;
 var ballY;
 var ballRadius;
@@ -14,7 +13,6 @@ var panels = ["myCanvas", "controlPanel", "howTo"];
 var isDarkModeActive = false;
 var isCleared;
 
- //Functions   
 function run(){
         document.getElementById("runButton").style.opacity = 0.4;
         document.getElementById("runButton").disabled = true;
